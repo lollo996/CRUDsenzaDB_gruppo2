@@ -5,57 +5,70 @@
  */
 package crudsenzadb.state;
 
+import crudsenzadb.CrudSenzaDbUI;
 import crudsenzadb.event.AddEvent;
 import crudsenzadb.event.Event;
+import crudsenzadb.event.SelezionaEvent;
 
-public class Automa implements State{
-    
+public class Automa implements State {
+
+    private CrudSenzaDbUI ui;
     private State stato;
+
+    public Automa(CrudSenzaDbUI ui) {
+        this.ui = ui;
+        this.stato = new RicercaState();
+    }
+    
+    
 
     @Override
     public void next(Event e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public class RicercaState implements State{
+
+    public class RicercaState implements State {
 
         @Override
         public void next(Event e) {
-            if(e instanceof AddEvent){}
-        }
-        
-    }
-    
-    public class AggiungiState implements State{
+            if (e instanceof AddEvent) {
 
-        @Override
-        public void next(Event e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            } else if (e instanceof SelezionaEvent) {
+            }
         }
+
     }
-    
-    public class RimuoviState implements State{
+
+    public class AggiungiState implements State {
 
         @Override
         public void next(Event e) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
-    
-     public class VisualizzaState implements State{
+
+    public class RimuoviState implements State {
 
         @Override
         public void next(Event e) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
-     
-      public class ModificaState implements State{
+
+    public class VisualizzaState implements State {
 
         @Override
         public void next(Event e) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
-     
+
+    public class ModificaState implements State {
+
+        @Override
+        public void next(Event e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }
+
 }
