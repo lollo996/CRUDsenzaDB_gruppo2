@@ -5,10 +5,6 @@
  */
 package crudsenzadb.event;
 
-/**
- *
- * @author Samuele
- */
-public class Add implements Event{
+public class SelezionaEvent implements Event {
     
 }

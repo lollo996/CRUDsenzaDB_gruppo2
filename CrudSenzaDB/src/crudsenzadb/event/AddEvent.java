@@ -9,6 +9,6 @@ package crudsenzadb.event;
  *
  * @author Samuele
  */
-public class Confirm implements Event{
+public class AddEvent implements Event{
     
 }

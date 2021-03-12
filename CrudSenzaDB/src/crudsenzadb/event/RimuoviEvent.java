@@ -9,6 +9,6 @@ package crudsenzadb.event;
  *
  * @author Samuele
  */
-public class Search implements Event {
+public class RimuoviEvent implements Event {
     
 }

@@ -9,6 +9,6 @@ package crudsenzadb.event;
  *
  * @author Samuele
  */
-public class Cancel implements Event {
+public class RicercaEvent implements Event {
     
 }

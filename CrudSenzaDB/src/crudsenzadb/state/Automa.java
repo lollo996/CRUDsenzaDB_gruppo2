@@ -5,6 +5,7 @@
  */
 package crudsenzadb.state;
 
+import crudsenzadb.event.AddEvent;
 import crudsenzadb.event.Event;
 
 public class Automa implements State{
@@ -16,16 +17,16 @@ public class Automa implements State{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public class SearchState implements State{
+    public class RicercaState implements State{
 
         @Override
         public void next(Event e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if(e instanceof AddEvent){}
         }
         
     }
     
-    public class AddState implements State{
+    public class AggiungiState implements State{
 
         @Override
         public void next(Event e) {
@@ -33,7 +34,7 @@ public class Automa implements State{
         }
     }
     
-    public class DeleteState implements State{
+    public class RimuoviState implements State{
 
         @Override
         public void next(Event e) {
@@ -41,7 +42,7 @@ public class Automa implements State{
         }
     }
     
-     public class ViewState implements State{
+     public class VisualizzaState implements State{
 
         @Override
         public void next(Event e) {
@@ -49,7 +50,7 @@ public class Automa implements State{
         }
     }
      
-      public class ModifyState implements State{
+      public class ModificaState implements State{
 
         @Override
         public void next(Event e) {

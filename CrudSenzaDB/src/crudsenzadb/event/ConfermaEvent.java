@@ -5,6 +5,10 @@
  */
 package crudsenzadb.event;
 
-public class Select implements Event {
+/**
+ *
+ * @author Samuele
+ */
+public class ConfermaEvent implements Event{
     
 }

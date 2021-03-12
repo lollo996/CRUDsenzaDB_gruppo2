@@ -9,6 +9,6 @@ package crudsenzadb.event;
  *
  * @author Samuele
  */
-public class Delete implements Event {
+public class AnnullaEvent implements Event {
     
 }
