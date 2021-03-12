@@ -20,6 +20,4 @@ public interface UIAutomabile {
 	void vaiStatoRimuovi();
 	
 	void vaiStatoVisualizza();
-	
-	void stampaMessaggio(String messaggio);
 }

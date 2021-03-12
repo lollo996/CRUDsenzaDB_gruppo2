@@ -22,12 +22,17 @@ public class Automa implements State {
 
     public Automa(UIAutomabile ui) {
         this.ui = ui;
+        ui.vaiStatoRicerca();
         this.stato = new RicercaState();
+        
     }
 
     @Override
     public void next(Event e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Siamo in " + stato);
+        System.out.println("Evento: " + e);
+        stato.next(e);
+        System.out.println("Arrivati in " + stato + "\n");
     }
 
     public class RicercaState implements State {

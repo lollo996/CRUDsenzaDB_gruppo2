@@ -5,17 +5,28 @@
  */
 package crudsenzadb;
 
+import crudsenzadb.event.AddEvent;
+import crudsenzadb.event.AnnullaEvent;
+import crudsenzadb.event.ConfermaEvent;
+import crudsenzadb.event.ModificaEvent;
+import crudsenzadb.event.RicercaEvent;
+import crudsenzadb.event.RimuoviEvent;
+import crudsenzadb.state.Automa;
+
 /**
  *
  * @author lenovo
  */
-public class CrudSenzaDbUI extends javax.swing.JFrame {
+public class CrudSenzaDbUI extends javax.swing.JFrame implements UIAutomabile {
+
+    private Automa automa;
 
     /**
      * Creates new form CrudSenzaDbUI
      */
     public CrudSenzaDbUI() {
         initComponents();
+        automa = new Automa(this);
     }
 
     /**
@@ -32,7 +43,7 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
         ModificaButton = new javax.swing.JButton();
         ConfermaButton = new javax.swing.JButton();
         AnnullaButton = new javax.swing.JButton();
-        RiimuoviButton = new javax.swing.JButton();
+        RimuoviButton = new javax.swing.JButton();
         NuovaButton = new javax.swing.JButton();
         CercaText = new javax.swing.JTextField();
         CercaButton = new javax.swing.JButton();
@@ -56,18 +67,48 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
         });
 
         ModificaButton.setText("Modifica");
+        ModificaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificaButtonActionPerformed(evt);
+            }
+        });
 
         ConfermaButton.setText("Conferma");
+        ConfermaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfermaButtonActionPerformed(evt);
+            }
+        });
 
         AnnullaButton.setText("Annulla");
+        AnnullaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnnullaButtonActionPerformed(evt);
+            }
+        });
 
-        RiimuoviButton.setText("Rimuovi");
+        RimuoviButton.setText("Rimuovi");
+        RimuoviButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RimuoviButtonActionPerformed(evt);
+            }
+        });
 
         NuovaButton.setText("Nuova");
+        NuovaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuovaButtonActionPerformed(evt);
+            }
+        });
 
         CercaText.setText("Cerca");
 
         CercaButton.setText("Cerca");
+        CercaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CercaButtonActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,7 +139,7 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(AnnullaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(RiimuoviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(RimuoviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CercaText, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,7 +173,7 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
                     .addComponent(ModificaButton)
                     .addComponent(ConfermaButton)
                     .addComponent(AnnullaButton)
-                    .addComponent(RiimuoviButton))
+                    .addComponent(RimuoviButton))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CercaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,6 +193,30 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
     private void DescrizioneTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescrizioneTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DescrizioneTextActionPerformed
+
+    private void ModificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificaButtonActionPerformed
+        automa.next(new ModificaEvent());
+    }//GEN-LAST:event_ModificaButtonActionPerformed
+
+    private void RimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RimuoviButtonActionPerformed
+        automa.next(new RimuoviEvent());
+    }//GEN-LAST:event_RimuoviButtonActionPerformed
+
+    private void AnnullaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnullaButtonActionPerformed
+       automa.next(new AnnullaEvent());
+    }//GEN-LAST:event_AnnullaButtonActionPerformed
+
+    private void ConfermaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfermaButtonActionPerformed
+        automa.next(new ConfermaEvent(true));
+    }//GEN-LAST:event_ConfermaButtonActionPerformed
+
+    private void CercaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CercaButtonActionPerformed
+        automa.next(new RicercaEvent());
+    }//GEN-LAST:event_CercaButtonActionPerformed
+
+    private void NuovaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuovaButtonActionPerformed
+        automa.next(new AddEvent());
+    }//GEN-LAST:event_NuovaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,8 +262,78 @@ public class CrudSenzaDbUI extends javax.swing.JFrame {
     private javax.swing.JTextField DescrizioneText;
     private javax.swing.JButton ModificaButton;
     private javax.swing.JButton NuovaButton;
-    private javax.swing.JButton RiimuoviButton;
+    private javax.swing.JButton RimuoviButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void vaiStatoAggiungi() {
+        CodiceText.setVisible(true);
+        DescrizioneText.setVisible(true);
+        CercaText.setVisible(false);
+        ModificaButton.setVisible(false);
+        RimuoviButton.setVisible(false);
+        AnnullaButton.setVisible(true);
+        ConfermaButton.setVisible(true);
+        NuovaButton.setVisible(false);
+        CercaButton.setVisible(false);
+        jTable1.setVisible(false);
+    }
+
+    @Override
+    public void vaiStatoModifica() {
+        CodiceText.setVisible(true);
+        DescrizioneText.setVisible(true);
+        CercaText.setVisible(false);
+        ModificaButton.setVisible(false);
+        RimuoviButton.setVisible(false);
+        AnnullaButton.setVisible(true);
+        ConfermaButton.setVisible(true);
+        NuovaButton.setVisible(false);
+        CercaButton.setVisible(false);
+        jTable1.setVisible(false);
+    }
+
+    @Override
+    public void vaiStatoRicerca() {
+        CodiceText.setVisible(false);
+        DescrizioneText.setVisible(false);
+        CercaText.setVisible(true);
+        ModificaButton.setVisible(false);
+        RimuoviButton.setVisible(false);
+        AnnullaButton.setVisible(false);
+        ConfermaButton.setVisible(false);
+        NuovaButton.setVisible(true);
+        CercaButton.setVisible(true);
+        jTable1.setVisible(true);
+    }
+
+    @Override
+    public void vaiStatoRimuovi() {
+        CodiceText.setVisible(true);
+        DescrizioneText.setVisible(true);
+        CercaText.setVisible(false);
+        ModificaButton.setVisible(false);
+        RimuoviButton.setVisible(false);
+        AnnullaButton.setVisible(true);
+        ConfermaButton.setVisible(true);
+        NuovaButton.setVisible(false);
+        CercaButton.setVisible(false);
+        jTable1.setVisible(false);
+    }
+
+    @Override
+    public void vaiStatoVisualizza() {
+        CodiceText.setVisible(false);
+        DescrizioneText.setVisible(false);
+        CercaText.setVisible(true);
+        ModificaButton.setVisible(true);
+        RimuoviButton.setVisible(true);
+        AnnullaButton.setVisible(false);
+        ConfermaButton.setVisible(false);
+        NuovaButton.setVisible(true);
+        CercaButton.setVisible(true);
+        jTable1.setVisible(true);
+    }
 }
