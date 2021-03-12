@@ -9,6 +9,17 @@ package crudsenzadb;
  *
  * @author utente
  */
-public interface InterfacciaUI {
+public interface UIAutomabile {
     
+	void vaiStatoAggiungi();
+	
+	void vaiStatoModifica();
+	
+	void vaiStatoRicerca();
+	
+	void vaiStatoRimuovi();
+	
+	void vaiStatoVisualizza();
+	
+	void stampaMessaggio(String messaggio);
 }
